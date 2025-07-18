@@ -6,7 +6,7 @@ import { AuthProvider } from './context/AuthContext';
 import { AssistantProvider } from './context/AssistantContext';
 import PrivateRoute from './components/Common/PrivateRoute';
 import AdminRoute from './components/Common/AdminRoute';
-import HomePage from './pages/Home/HomePage';
+import HomePage from './pages/home/homepage';
 import LoginPage from './pages/Auth/LoginPage';
 import RegisterPage from './pages/Auth/RegisterPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
@@ -15,7 +15,7 @@ import LessonPage from './pages/Lesson/LessonPage';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminCourses from './pages/Admin/AdminCourses';
 import AdminLessons from './pages/Admin/AdminLessons';
-import Layout from './components/Common/Layout';
+import Layout from './components/common/layout';
 import Assistant from './components/Assistant/Assistant';
 
 function App() {
