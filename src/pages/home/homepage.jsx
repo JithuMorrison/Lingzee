@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/authcontext';
 import api from '../../services/api';
 import { FaSearch, FaLanguage, FaLaptopCode, FaCalculator, FaFlask, FaHistory } from 'react-icons/fa';
 
