@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/authcontext';
 import { AssistantProvider } from './context/AssistantContext';
 import { SocketProvider } from './context/SocketContext'; // ✅ Add this import
 import PrivateRoute from './components/common/privateroute';

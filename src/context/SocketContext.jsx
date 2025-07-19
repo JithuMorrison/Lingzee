@@ -7,10 +7,11 @@ const SocketContext = createContext();
 export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const { user } = useAuth();
+  const WS_URL = "http://localhost:5000";
 
   useEffect(() => {
     if (user) {
-      const newSocket = io(process.env.REACT_APP_WS_URL, {
+      const newSocket = io(WS_URL, {
         withCredentials: true,
         extraHeaders: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
