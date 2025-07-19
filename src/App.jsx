@@ -18,6 +18,7 @@ import AdminCourses from './pages/admin/AdminCourses';
 import AdminLessons from './pages/admin/AdminLessons';
 import Layout from './components/common/layout';
 import Assistant from './components/assistant/Assistant';
+import DefaultCoursePage from './pages/courses/DefaultCoursePage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 
                 <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
+                <Route path="/courses" element={<PrivateRoute><DefaultCoursePage /></PrivateRoute>} />
                 <Route path="/courses/:id" element={<PrivateRoute><CoursePage /></PrivateRoute>} />
                 <Route path="/lessons/:id" element={<PrivateRoute><LessonPage /></PrivateRoute>} />
                 
