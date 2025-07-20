@@ -460,8 +460,18 @@ def user_stats(current_user):
     enrollments = list(enrollments_collection.find({'user_id': str(current_user['_id'])}))
     
     for enrollment in enrollments:
-        progress = get_course_progress(current_user, enrollment['course_id']).json
-        if progress['progress'] >= 0.99:  # Consider 99% as completed
+        # Get progress from the progress collection directly
+        progress_items = list(progress_collection.find({
+            'user_id': str(current_user['_id']),
+            'course_id': enrollment['course_id'],
+            'completed': True
+        }))
+        
+        lessons_count = lessons_collection.count_documents({
+            'course_id': enrollment['course_id']
+        })
+        
+        if lessons_count > 0 and len(progress_items) == lessons_count:
             completed_courses += 1
     
     return jsonify({
