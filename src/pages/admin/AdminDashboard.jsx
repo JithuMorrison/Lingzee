@@ -148,7 +148,7 @@ const AdminDashboard = () => {
             recentCourses.map(course => (
               <Link 
                 key={course.id} 
-                to={`/admin/courses/${course.id}/lessons`}
+                to={`/admin/courses/${course._id}/lessons`}
                 className="p-4 hover:bg-gray-50 transition block"
               >
                 <div className="flex justify-between items-center">

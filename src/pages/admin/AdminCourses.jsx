@@ -97,7 +97,7 @@ const AdminCourses = () => {
     if (window.confirm('Are you sure you want to delete this course?')) {
       try {
         await api.delete(`/admin/courses/${courseId}`);
-        setCourses(prev => prev.filter(course => course.id !== courseId));
+        setCourses(prev => prev.filter(course => course._id !== courseId));
         toast.success('Course deleted successfully!');
       } catch (error) {
         toast.error('Error deleting course');
@@ -220,7 +220,7 @@ const AdminCourses = () => {
                       <FaEdit className="mr-1" /> Manage
                     </button>
                     <button
-                      onClick={() => handleDelete(course.id)}
+                      onClick={() => handleDelete(course._id)}
                       className="text-red-600 hover:text-red-900 flex items-center"
                     >
                       <FaTrash className="mr-1" /> Delete
