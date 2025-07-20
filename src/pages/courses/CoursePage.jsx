@@ -130,7 +130,9 @@ const CoursePage = () => {
                     ></div>
                   </div>
                   <button 
-                    onClick={() => navigate(`/lessons/${course.lessons[0]._id}`)}
+                    onClick={() => {if(course.lessons[0]){
+                      navigate(`/lessons/${course.lessons[0].id}`);
+                    }}}
                     className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition mb-2"
                   >
                     Continue Learning
