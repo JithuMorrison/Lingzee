@@ -132,7 +132,7 @@ const DashboardPage = () => {
                         {Math.round(courseProgress.progress * 100)}% complete
                       </span>
                       <Link 
-                        to={`/courses/${course.id}`}
+                        to={`/courses/${course._id}`}
                         className="text-sm bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition"
                       >
                         Continue
