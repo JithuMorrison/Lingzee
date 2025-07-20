@@ -171,7 +171,7 @@ const DefaultCoursePage = () => {
                       {course.lesson_count} lessons
                     </span>
                     <Link 
-                      to={`/courses/${course.id}`}
+                      to={`/courses/${course._id}`}
                       className="text-sm bg-white text-indigo-600 border border-indigo-600 px-3 py-1 rounded hover:bg-indigo-50 transition"
                     >
                       View
