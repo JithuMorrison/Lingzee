@@ -214,7 +214,7 @@ const AdminCourses = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button
-                      onClick={() => navigate(`/admin/courses/${course.id}/lessons`)}
+                      onClick={() => navigate(`/admin/courses/${course._id}/lessons`)}
                       className="text-indigo-600 hover:text-indigo-900 mr-4 flex items-center"
                     >
                       <FaEdit className="mr-1" /> Manage
