@@ -24,14 +24,16 @@ const AdminLessons = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [courseRes, lessonsRes] = await Promise.all([
-          api.get(`/admin/courses/${id}`),
-          api.get(`/admin/courses/${id}/lessons`)
-        ]);
-        
-        setCourse(courseRes.data);
-        setLessons(lessonsRes.data);
-        setIsLoading(false);
+        if (id) {
+          const [courseRes, lessonsRes] = await Promise.all([
+            api.get(`/admin/courses/${id}`),
+            api.get(`/admin/courses/${id}/lessons`)
+          ]);
+          
+          setCourse(courseRes.data);
+          setLessons(lessonsRes.data);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
         setIsLoading(false);
@@ -86,7 +88,7 @@ const AdminLessons = () => {
         lessonData.content = formData.content || '';
       }
       
-      const response = await api.post('/admin/lessons', lessonData);
+      const response = await api.post(`/admin/courses/${id}/lessons`, lessonData);
       setLessons(prev => [...prev, response.data]);
       setShowModal(false);
       setFormData({
@@ -108,7 +110,7 @@ const AdminLessons = () => {
     if (window.confirm('Are you sure you want to delete this lesson?')) {
       try {
         await api.delete(`/admin/lessons/${lessonId}`);
-        setLessons(prev => prev.filter(lesson => lesson.id !== lessonId));
+        setLessons(prev => prev.filter(lesson => lesson._id !== lessonId));
         toast.success('Lesson deleted successfully!');
       } catch (error) {
         toast.error('Error deleting lesson');
@@ -309,7 +311,7 @@ const AdminLessons = () => {
                       <FaEdit className="mr-1" /> Edit
                     </button>
                     <button
-                      onClick={() => handleDelete(lesson.id)}
+                      onClick={() => handleDelete(lesson._id)}
                       className="text-red-600 hover:text-red-900 flex items-center"
                     >
                       <FaTrash className="mr-1" /> Delete
