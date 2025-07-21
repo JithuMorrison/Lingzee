@@ -684,8 +684,15 @@ def admin_lessons(current_user, course_id):
             'updated_at': datetime.utcnow()
         }
         
+        # Insert new lesson
         lesson_id = lessons_collection.insert_one(lesson).inserted_id
         lesson['_id'] = str(lesson_id)
+        
+        # Add lesson _id to course's lessons array
+        courses_collection.update_one(
+            {'_id': ObjectId(course_id)},
+            {'$push': {'lesson': lesson['_id']}}  # Add to lessons array
+        )
         
         return jsonify(lesson), 201
 
