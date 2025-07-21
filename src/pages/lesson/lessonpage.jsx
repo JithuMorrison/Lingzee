@@ -154,11 +154,12 @@ const LessonPage = () => {
   };
 
   const navigateToLesson = (direction) => {
-    const currentIndex = course.lessons.findIndex(l => l.id === lesson.id);
+    console.log(course, lesson);
+    const currentIndex = course.lesson.findIndex(l => l === lesson._id);
     if (direction === 'prev' && currentIndex > 0) {
-      navigate(`/lessons/${course.lessons[currentIndex - 1].id}`);
-    } else if (direction === 'next' && currentIndex < course.lessons.length - 1) {
-      navigate(`/lessons/${course.lessons[currentIndex + 1].id}`);
+      navigate(`/lessons/${course.lesson[currentIndex - 1]}`);
+    } else if (direction === 'next' && currentIndex < course.lesson.length - 1) {
+      navigate(`/lessons/${course.lesson[currentIndex + 1]}`);
     }
   };
 
@@ -178,7 +179,7 @@ const LessonPage = () => {
     <div className="container mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-6">
         <button 
-          onClick={() => navigate(`/courses/${course.id}`)}
+          onClick={() => navigate(`/courses/${course._id}`)}
           className="flex items-center text-indigo-600 hover:text-indigo-800"
         >
           <FaArrowLeft className="mr-2" />
@@ -363,8 +364,8 @@ const LessonPage = () => {
         
         <button 
           onClick={() => navigateToLesson('next')}
-          disabled={course.lessons.findIndex(l => l.id === lesson.id) === course.lessons.length - 1}
-          className={`flex items-center px-4 py-2 rounded-lg ${course.lessons.findIndex(l => l.id === lesson.id) === course.lessons.length - 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+          disabled={course.lesson.findIndex(l => l === lesson._id) === course.lesson.length - 1}
+          className={`flex items-center px-4 py-2 rounded-lg ${course.lessons.findIndex(l => l === lesson._id) === course.lessons.length - 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
         >
           Next <FaArrowRight className="ml-2" />
         </button>
