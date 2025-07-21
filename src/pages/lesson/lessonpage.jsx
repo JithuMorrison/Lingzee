@@ -86,13 +86,13 @@ const LessonPage = () => {
 
   const markAsCompleted = async () => {
     try {
-      await api.post(`/progress/${course.id}/${lesson.id}/complete`);
+      await api.post(`/progress/${course._id}/${lesson._id}/complete`);
       setIsCompleted(true);
       setProgress(1);
       
       if (user) {
         const pointsToAdd = Math.floor(lesson.duration * 2);
-        await api.post(`/users/${user.id}/points`, { points: pointsToAdd });
+        await api.post(`/users/${user._id}/points`, { points: pointsToAdd });
         toast.success(`Earned ${pointsToAdd} points!`);
       }
     } catch (error) {
